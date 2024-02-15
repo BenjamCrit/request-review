@@ -15,13 +15,20 @@ try {
 
   const pullRequestNumber = core.getInput('pull-request-number') || githubContext.payload.pull_request.number;
   const reviewers = core.getInput('reviewers').split(" ");
+  const reviewersTeam = core.getInput('team-reviewers').split(" ");
 
-  console.log(`Request review from ${reviewers}`);
+  if reviewers {
+    console.log(`Request review from ${reviewers}`);
+  }
+  if reviewersTeam {
+    console.log(`Request review from ${reviewersTeam}`);
+  }
 
   octokit.pulls.requestReviewers({
     ...githubContext.repo,
     pull_number: pullRequestNumber,
     reviewers: reviewers,
+    team-reviewers: reviewersTeam,
   });
 } catch (error) {
   core.setFailed(error.message);

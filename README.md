@@ -20,6 +20,7 @@ This action requests review. You can set pull request number.
 | --- | --- | --- |
 | `token` | `GITHUB_TOKEN` | None |
 | `reviewers` | Reviewers to add, in space separated list. | None |
+| `team-reviewers` | Teams of reviewers to add, in space separated list. | None |
 | `pull-request-number` | Pull request's number to request review. | `github.context.payload.pull_request.number` |
 
 ## Outputs
